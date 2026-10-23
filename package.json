@@ -1,0 +1,16 @@
+{
+  "name": "@meridian-evidence-lab/muxreceipt-scenarios",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Synthetic adversarial transfer scenarios and expected results for customer attribution integrations.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test test.mjs",
+    "demo": "node demo.mjs"
+  },
+  "exports": "./index.mjs"
+}

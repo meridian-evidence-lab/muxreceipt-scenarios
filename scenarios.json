@@ -1,0 +1,179 @@
+[
+  {
+    "name": "large-u64-and-exact-amount",
+    "input": {
+      "schemaVersion": 1,
+      "mappings": [
+        {
+          "network": "synthetic:testnet",
+          "contract": "contract-demo",
+          "asset": "asset-demo",
+          "tenant": "customer-a",
+          "muxedId": "18446744073709551615",
+          "fromLedger": 100,
+          "untilLedger": null
+        }
+      ],
+      "events": [
+        {
+          "network": "synthetic:testnet",
+          "id": "event-100-1",
+          "ledger": 100,
+          "contract": "contract-demo",
+          "asset": "asset-demo",
+          "muxedId": "18446744073709551615",
+          "amount": "9007199254740993",
+          "successful": true,
+          "type": "transfer"
+        }
+      ]
+    },
+    "expectedStatus": "no-exceptions-in-input"
+  },
+  {
+    "name": "duplicate-delivery",
+    "input": {
+      "schemaVersion": 1,
+      "mappings": [
+        {
+          "network": "synthetic:testnet",
+          "contract": "contract-demo",
+          "asset": "asset-demo",
+          "tenant": "customer-a",
+          "muxedId": "18446744073709551615",
+          "fromLedger": 100,
+          "untilLedger": null
+        }
+      ],
+      "events": [
+        {
+          "network": "synthetic:testnet",
+          "id": "event-100-1",
+          "ledger": 100,
+          "contract": "contract-demo",
+          "asset": "asset-demo",
+          "muxedId": "18446744073709551615",
+          "amount": "9007199254740993",
+          "successful": true,
+          "type": "transfer"
+        },
+        {
+          "network": "synthetic:testnet",
+          "id": "event-100-1",
+          "ledger": 100,
+          "contract": "contract-demo",
+          "asset": "asset-demo",
+          "muxedId": "18446744073709551615",
+          "amount": "9007199254740993",
+          "successful": true,
+          "type": "transfer"
+        }
+      ]
+    },
+    "expectedStatus": "no-exceptions-in-input"
+  },
+  {
+    "name": "unknown-customer",
+    "input": {
+      "schemaVersion": 1,
+      "mappings": [
+        {
+          "network": "synthetic:testnet",
+          "contract": "contract-demo",
+          "asset": "asset-demo",
+          "tenant": "customer-a",
+          "muxedId": "18446744073709551615",
+          "fromLedger": 100,
+          "untilLedger": null
+        }
+      ],
+      "events": [
+        {
+          "network": "synthetic:testnet",
+          "id": "event-100-1",
+          "ledger": 100,
+          "contract": "contract-demo",
+          "asset": "asset-demo",
+          "muxedId": "0",
+          "amount": "9007199254740993",
+          "successful": true,
+          "type": "transfer"
+        }
+      ]
+    },
+    "expectedStatus": "review-required"
+  },
+  {
+    "name": "conflicting-identity",
+    "input": {
+      "schemaVersion": 1,
+      "mappings": [
+        {
+          "network": "synthetic:testnet",
+          "contract": "contract-demo",
+          "asset": "asset-demo",
+          "tenant": "customer-a",
+          "muxedId": "18446744073709551615",
+          "fromLedger": 100,
+          "untilLedger": null
+        }
+      ],
+      "events": [
+        {
+          "network": "synthetic:testnet",
+          "id": "event-100-1",
+          "ledger": 100,
+          "contract": "contract-demo",
+          "asset": "asset-demo",
+          "muxedId": "18446744073709551615",
+          "amount": "9007199254740993",
+          "successful": true,
+          "type": "transfer"
+        },
+        {
+          "network": "synthetic:testnet",
+          "id": "event-100-1",
+          "ledger": 100,
+          "contract": "contract-demo",
+          "asset": "asset-demo",
+          "muxedId": "18446744073709551615",
+          "amount": "1",
+          "successful": true,
+          "type": "transfer"
+        }
+      ]
+    },
+    "expectedStatus": "review-required"
+  },
+  {
+    "name": "wrong-asset",
+    "input": {
+      "schemaVersion": 1,
+      "mappings": [
+        {
+          "network": "synthetic:testnet",
+          "contract": "contract-demo",
+          "asset": "asset-demo",
+          "tenant": "customer-a",
+          "muxedId": "18446744073709551615",
+          "fromLedger": 100,
+          "untilLedger": null
+        }
+      ],
+      "events": [
+        {
+          "network": "synthetic:testnet",
+          "id": "event-100-1",
+          "ledger": 100,
+          "contract": "contract-demo",
+          "asset": "unregistered-asset",
+          "muxedId": "18446744073709551615",
+          "amount": "9007199254740993",
+          "successful": true,
+          "type": "transfer"
+        }
+      ]
+    },
+    "expectedStatus": "review-required"
+  }
+]
